@@ -4,7 +4,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:p_1/login/model.dart';
-import 'package:p_1/sceen_two.dart';
+import 'package:p_1/login/sceen_two.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class ScreenOne extends StatefulWidget {

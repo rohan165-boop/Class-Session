@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 
-import 'package:p_1/sceen_two.dart';
+import 'package:p_1/login/sceen_two.dart';
 import 'package:showcaseview/showcaseview.dart';
 
 class ShowcaseWidget extends StatefulWidget {

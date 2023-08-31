@@ -3,12 +3,12 @@ import 'dart:developer';
 
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:p_1/screen_1.dart';
-import 'package:p_1/showcaseview.dart';
+import 'package:p_1/login/screen_1.dart';
+import 'package:p_1/login/showcaseview.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:showcaseview/showcaseview.dart';
 
-import 'login/model.dart';
+import 'model.dart';
 
 class ScreenTwo extends StatefulWidget {
   final Model model;

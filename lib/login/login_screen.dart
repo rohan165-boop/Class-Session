@@ -3,7 +3,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../sceen_two.dart';
+import 'sceen_two.dart';
 import 'bloc/login_bloc.dart';
 
 class LoginScreen extends StatefulWidget {
