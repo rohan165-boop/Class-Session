@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:p_1/animation/view.dart';
 import 'package:p_1/audio_player/screen/audio_player.dart';
+import 'package:p_1/camera_detcator/camera_screen.dart';
 import 'package:p_1/video_player/screen/video_screen.dart';
 
 class EntryScreen extends StatefulWidget {
@@ -39,6 +41,32 @@ class _EntryScreenState extends State<EntryScreen> {
                           builder: (context) => const CustomAudioPlayer()));
                 },
                 child: Text("Audio Palyer",
+                    style: Theme.of(context).textTheme.headlineLarge),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  // Navigator.push(
+                  //     context,
+                  //     MaterialPageRoute(
+                  //         builder: (context) => const CameraScreen()));
+                },
+                child: Text("Camera",
+                    style: Theme.of(context).textTheme.headlineLarge),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const AnimatedPathDemo()));
+                },
+                child: Text("Animation",
                     style: Theme.of(context).textTheme.headlineLarge),
               ),
             ],

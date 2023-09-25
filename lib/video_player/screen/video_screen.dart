@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:chewie/chewie.dart';
 import 'package:flutter/material.dart';
-import 'package:p_1/video_player/screen/widget/dealy_slider_widget.dart';
+import 'package:p_1/video_player/widget/dealy_slider_widget.dart';
 import 'package:video_player/video_player.dart';
 
 class VideoPayerScreen extends StatefulWidget {
@@ -18,6 +18,7 @@ class _VideoPayerScreenState extends State<VideoPayerScreen> {
   late VideoPlayerController _videoPlayerController2;
   ChewieController? _chewieController;
   int? bufferDelay;
+  int currPlayIndex = 0;
 
   // @override
   // void initState() {
@@ -54,6 +55,12 @@ class _VideoPayerScreenState extends State<VideoPayerScreen> {
       _videoPlayerController1.initialize(),
       _videoPlayerController2.initialize()
     ]);
+    _videoPlayerController1.addListener(() {
+      if (_videoPlayerController1.value.position ==
+          _videoPlayerController1.value.duration) {
+        toggleNextVideo();
+      }
+    });
     _createChewieController();
     setState(() {});
   }
@@ -119,7 +126,7 @@ class _VideoPayerScreenState extends State<VideoPayerScreen> {
       additionalOptions: (context) {
         return <OptionItem>[
           OptionItem(
-            onTap: toggleVideo,
+            onTap: toggleNextVideo,
             iconData: Icons.live_tv_sharp,
             title: 'Toggle Video Src',
           ),
@@ -153,19 +160,79 @@ class _VideoPayerScreenState extends State<VideoPayerScreen> {
         color: Colors.grey,
       ),
       // autoInitialize: true,
-      // customControls: InkWell(
-      //     onTap: () {
-      //       toggleVideo();
-      //     },
-      //     child: const Text("Next")),
+      customControls: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 20),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 100),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  InkWell(
+                      onTap: () {
+                        if (currPlayIndex != 0) {
+                          togglePreVideo();
+                        }
+                      },
+                      child: const Icon(
+                        Icons.fast_rewind_rounded,
+                        size: 30,
+                        color: Colors.white,
+                      )),
+                  InkWell(
+                      onTap: () {
+                        // if (currPlayIndex != 0) {
+                        //   togglePreVideo();
+                        // }
+                      },
+                      child: const Icon(
+                        Icons.pause_circle_outline_sharp,
+                        size: 30,
+                        color: Colors.white,
+                      )),
+                  InkWell(
+                    onTap: () {
+                      toggleNextVideo();
+                    },
+                    child: const Icon(
+                      Icons.fast_forward_rounded,
+                      size: 30,
+                      color: Colors.white,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(
+              height: 100,
+            ),
+            Slider(
+              value:
+                  _videoPlayerController1.value.position.inSeconds.toDouble(),
+              onChanged: (value) {
+                // _videoPlayerController1.value.position.inSeconds = value.roundToDouble();
+              },
+            )
+          ],
+        ),
+      ),
     );
   }
 
-  int currPlayIndex = 0;
-
-  Future<void> toggleVideo() async {
+  Future<void> toggleNextVideo() async {
     await _videoPlayerController1.pause();
     currPlayIndex += 1;
+    if (currPlayIndex >= srcs.length) {
+      currPlayIndex = 0;
+    }
+    await initializePlayer();
+  }
+
+  Future<void> togglePreVideo() async {
+    await _videoPlayerController1.pause();
+    currPlayIndex -= 1;
     if (currPlayIndex >= srcs.length) {
       currPlayIndex = 0;
     }
@@ -262,53 +329,6 @@ class _VideoPayerScreenState extends State<VideoPayerScreen> {
                   ),
                 ),
               )
-            ],
-          ),
-          Row(
-            children: <Widget>[
-              Expanded(
-                child: TextButton(
-                  onPressed: () {
-                    setState(() {
-                      _platform = TargetPlatform.android;
-                    });
-                  },
-                  child: const Padding(
-                    padding: EdgeInsets.symmetric(vertical: 16.0),
-                    child: Text("Android controls"),
-                  ),
-                ),
-              ),
-              Expanded(
-                child: TextButton(
-                  onPressed: () {
-                    setState(() {
-                      _platform = TargetPlatform.iOS;
-                    });
-                  },
-                  child: const Padding(
-                    padding: EdgeInsets.symmetric(vertical: 16.0),
-                    child: Text("iOS controls"),
-                  ),
-                ),
-              )
-            ],
-          ),
-          Row(
-            children: <Widget>[
-              Expanded(
-                child: TextButton(
-                  onPressed: () {
-                    setState(() {
-                      _platform = TargetPlatform.windows;
-                    });
-                  },
-                  child: const Padding(
-                    padding: EdgeInsets.symmetric(vertical: 16.0),
-                    child: Text("Desktop controls"),
-                  ),
-                ),
-              ),
             ],
           ),
           if (Platform.isAndroid)
