@@ -51,6 +51,9 @@ class _KhaltiScreenState extends State<KhaltiScreen> {
               onFailure: (PaymentFailureModel model) {
                 log("Payment Failed");
               },
+              onCancel: () {
+                log("Payment Cancelled");
+              },
             );
           },
         ),
