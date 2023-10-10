@@ -2,11 +2,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:sthaniya/core/services/naviagtion_service.dart';
-import 'package:sthaniya/core/services/service_locator.dart';
 
-import '../../core/constants/app_colors.dart';
-import 'double_tapped_interactive_viewer_widget.dart';
 import 'image_zooming.dart';
 
 class ImageView extends StatefulWidget {
@@ -106,12 +102,12 @@ class _ImageViewState extends State<ImageView> {
                                     onTap: () {
                                       widget.viewImage.value =
                                           !widget.viewImage.value;
-                                      locator<NavigationService>().goBack();
+                                      // locator<NavigationService>().goBack();
                                     },
                                     child: Icon(
                                       Icons.cancel_outlined,
                                       size: 40.w,
-                                      color: AppColors.errorColor,
+                                      color: Colors.red,
                                     ),
                                   ),
                                 ],
@@ -146,7 +142,7 @@ class _ImageViewState extends State<ImageView> {
                                               },
                                               icon: Icon(
                                                 Icons.arrow_back_ios_new,
-                                                color: AppColors.errorColor,
+                                                color: Colors.red,
                                                 size: 30.w,
                                               )),
                                         Spacer(),
@@ -162,7 +158,7 @@ class _ImageViewState extends State<ImageView> {
                                               },
                                               icon: Icon(
                                                 Icons.arrow_forward_ios,
-                                                color: AppColors.errorColor,
+                                                color: Colors.red,
                                                 size: 30.w,
                                               )),
                                       ],

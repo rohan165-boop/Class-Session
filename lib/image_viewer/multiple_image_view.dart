@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'dart:ui' as ui;
 
-import 'package:sthaniya/core/constants/app_colors.dart';
-
 import 'full_image_view.dart';
 
 class CustomMultipleImageViewWidget extends StatefulWidget {
@@ -96,7 +94,7 @@ class _CustomMultipleImageViewWidgetState
                         padding: EdgeInsets.all(4.0),
                         decoration: BoxDecoration(
                             border: Border.all(
-                          color: AppColors.errorColor,
+                          color: Colors.red,
                         )),
                         child: ValueListenableBuilder(
                             valueListenable: _aspectRatio,
@@ -173,8 +171,8 @@ class _CustomMultipleImageViewWidgetState
                                                           .textTheme
                                                           .headlineLarge!
                                                           .copyWith(
-                                                              color: AppColors
-                                                                  .whiteColor)),
+                                                              color:
+                                                                  Colors.red)),
                                                 ),
                                               ),
                                             ),

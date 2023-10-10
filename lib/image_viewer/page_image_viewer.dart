@@ -2,9 +2,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:sthaniya/core/constants/app_colors.dart';
-
-import 'package:sthaniya/widgets/image_preview/double_tapped_interactive_viewer_widget.dart';
+import 'package:p_1/image_viewer/image_zooming.dart';
 
 class ImageScreenModel {
   final List<String> imageList;
@@ -96,7 +94,7 @@ class _CustomImagePreviewScreenState extends State<CustomImagePreviewScreen> {
                     onPressed: () => Navigator.pop(context),
                     icon: Icon(
                       Icons.arrow_back,
-                      color: AppColors.blackColor,
+                      color: Colors.black,
                     ),
                   ),
                   if (widget.images.title != null) ...{
@@ -112,7 +110,7 @@ class _CustomImagePreviewScreenState extends State<CustomImagePreviewScreen> {
                                 .bodyMedium!
                                 .copyWith(
                                   fontSize: 13.sp,
-                                  color: AppColors.blackColor,
+                                  color: Colors.black,
                                 ),
                           ),
                         );
