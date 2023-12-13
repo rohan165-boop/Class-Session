@@ -4,6 +4,7 @@
 
 list(APPEND FLUTTER_PLUGIN_LIST
   audioplayers_linux
+  pdfrx
   tflite_flutter_plus
   url_launcher_linux
 )

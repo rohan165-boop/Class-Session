@@ -97,6 +97,19 @@ class _EntryScreenState extends State<EntryScreen> {
                 child: Text("Animation",
                     style: Theme.of(context).textTheme.headlineLarge),
               ),
+              const SizedBox(
+                height: 20,
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const AnimatedPathDemo()));
+                },
+                child: Text("Pdf View",
+                    style: Theme.of(context).textTheme.headlineLarge),
+              ),
             ],
           ),
         ),
