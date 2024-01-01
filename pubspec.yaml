@@ -44,7 +44,8 @@ dependencies:
   khalti_flutter: ^3.0.0
 
 # PDF_View
-  pdfrx: ^0.2.0
+  # pdfrx: ^0.2.0
+  # pdf_render: ^1.4.5
 
 dev_dependencies:
   flutter_test:
