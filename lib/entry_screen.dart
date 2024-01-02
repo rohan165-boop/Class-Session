@@ -5,6 +5,8 @@ import 'package:p_1/camera_detcator/camera_screen.dart';
 import 'package:p_1/eSewa/e_sewa_screen.dart';
 import 'package:p_1/khalti/khalti_screen.dart';
 import 'package:p_1/pdf_view/pdf_viewer_screen.dart';
+import 'package:p_1/research/snack_game.dart';
+import 'package:p_1/research/text_research.dart';
 import 'package:p_1/video_player/screen/video_screen.dart';
 
 class EntryScreen extends StatefulWidget {
@@ -106,9 +108,9 @@ class _EntryScreenState extends State<EntryScreen> {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const AnimatedPathDemo()));
+                          builder: (context) => const TextResearchScreen()));
                 },
-                child: Text("Pdf View",
+                child: Text("Research",
                     style: Theme.of(context).textTheme.headlineLarge),
               ),
             ],
